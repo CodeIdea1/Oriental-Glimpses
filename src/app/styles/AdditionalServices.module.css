@@ -1,0 +1,159 @@
+.additionalServices {
+  padding: 80px 0 80px 170px;
+  background: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  gap: 20px;
+}
+
+.headerContent {
+  text-align: left;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.headerIcon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(5%) sepia(12%) saturate(2847%) hue-rotate(343deg) brightness(96%) contrast(97%);
+}
+
+.headerLine {
+  width: 800px;
+  height: 1px;
+  background: #ddd;
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.navButton {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #FDF8F7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #130705;
+}
+
+.navButton:hover {
+  background: #130705;
+  color: white;
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.title {
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #130604;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: GT Pressura, sans-serif;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.servicesSwiper {
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.card {
+  background: white;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+
+
+.imageWrapper {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .imageWrapper img {
+  transform: scale(1.1);
+}
+
+.cardTitle {
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #130604;
+  padding: 25px 0px;
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .headerLine {
+    display: none;
+  }
+
+  .navigationButtons {
+    align-self: flex-end;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .servicesSwiper {
+    padding: 20px;
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding: 20px 15px;
+    min-height: 70px;
+  }
+}

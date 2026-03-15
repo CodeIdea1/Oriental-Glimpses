@@ -1,0 +1,316 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: transparent;
+  backdrop-filter: none;
+  z-index: 1000;
+  transition: all 0.5s ease;
+
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 2px dotted white;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar.scrolled .menuButton {
+  border-color: #130604;
+}
+
+.menuButton.menuOpen {
+  border-color: #130604;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.menuButton.menuOpen .menuIcon:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+  background: #130604;
+}
+
+.menuButton.menuOpen .menuIcon:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.menuOpen .menuIcon:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+  background: #130604;
+}
+
+.navbar.scrolled .menuIcon {
+  background: #130604;
+}
+
+.logoContainer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: gap 0.5s ease;
+}
+
+.logoContainer:has(.logo.visible) {
+  gap: 10px;
+}
+
+.logoDecorLeft,
+.logoDecorRight {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 1;
+  transition: all 0.5s ease;
+  filter: brightness(0) invert(1);
+}
+
+.logoDecorLeft.decorScrolled {
+  transform: translateX(180px);
+  filter: brightness(0) invert(0);
+}
+
+.logoDecorRight.decorScrolled {
+  transform: translateX(-180px);
+  filter: brightness(0) invert(0);
+}
+
+.logoText {
+  font-family: 'Cinzel', 'GT Sectra Fine', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.logoText.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: absolute;
+}
+
+.logo.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.enquireButton {
+  padding: 10px 10px 10px 20px;
+  background:  white;
+  color: #130604;
+  border: 1px solid #130604;
+  border-radius: 30px;
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrowIcon {
+  width: 34px;
+  height: 34px;
+  border: 2px dotted #130604;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.enquireButton:hover {
+  background: #000;
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileMenu.closing {
+  animation: fadeOut 0.5s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.menuList li {
+  overflow: hidden;
+}
+
+.menuList li a {
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 2rem;
+  color: #130604;
+  text-decoration: none;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  animation: slideUpLink 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(100%);
+}
+
+.mobileMenu.closing .menuList li a {
+  animation: slideDownLink 0.6s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+  transform: translateY(0);
+}
+
+.menuList li:nth-child(1) a {
+  animation-delay: 0.15s;
+}
+
+.menuList li:nth-child(2) a {
+  animation-delay: 0.25s;
+}
+
+.menuList li:nth-child(3) a {
+  animation-delay: 0.35s;
+}
+
+.menuList li:nth-child(4) a {
+  animation-delay: 0.45s;
+}
+
+.menuList li:nth-child(5) a {
+  animation-delay: 0.55s;
+}
+
+.mobileMenu.closing .menuList li:nth-child(1) a {
+  animation-delay: 0s;
+}
+
+.mobileMenu.closing .menuList li:nth-child(2) a {
+  animation-delay: 0.05s;
+}
+
+.mobileMenu.closing .menuList li:nth-child(3) a {
+  animation-delay: 0.1s;
+}
+
+.mobileMenu.closing .menuList li:nth-child(4) a {
+  animation-delay: 0.15s;
+}
+
+.mobileMenu.closing .menuList li:nth-child(5) a {
+  animation-delay: 0.2s;
+}
+
+@keyframes slideUpLink {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDownLink {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.menuList li a:hover {
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .enquireButton {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

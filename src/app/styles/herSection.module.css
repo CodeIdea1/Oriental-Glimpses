@@ -1,0 +1,179 @@
+.heroContainer {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageContainer {
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  will-change: transform;
+  transform: scale(1.2);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position:-200%  100% ;
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 130%;
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+  z-index: 5;
+  pointer-events: none;
+  transform: translateX(-18%);
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  color: var(--bg-white);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  width: max-content;
+}
+
+.overlay h1 {
+  font-size: 9rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-oregano);
+  line-height: 1.2;
+  will-change: transform;
+  text-transform: uppercase;
+}
+
+.overlay p {
+  font-size: 1.5rem;
+  color: var(--bg-light);
+  font-family: var(--font-tajawal);
+}
+
+.aboutSection {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translate(-100%, -50%);
+  width: 50%;
+  height: 80%;
+  z-index: 10;
+  opacity: 0;
+}
+
+.aboutContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+.aboutContent {
+  text-align: left;
+  max-width: 100%;
+}
+
+.aboutTitle {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-changa);
+  line-height: 1.2;
+}
+
+.aboutDescription {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  max-width: 350px;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.swiper :global(.swiper-button-next),
+.swiper :global(.swiper-button-prev),
+.hero :global(.swiper-button-next),
+.hero :global(.swiper-button-prev) {
+  color: var(--bg-white);
+  background: var(--primary);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.swiper :global(.swiper-button-next):hover,
+.swiper :global(.swiper-button-prev):hover,
+.hero :global(.swiper-button-next):hover,
+.hero :global(.swiper-button-prev):hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+.swiper :global(.swiper-button-next)::after,
+.swiper :global(.swiper-button-prev)::after,
+.hero :global(.swiper-button-next)::after,
+.hero :global(.swiper-button-prev)::after {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 2.5rem;
+  }
+  
+  .overlay p {
+    font-size: 1.2rem;
+  }
+
+  .aboutContainer {
+    padding: 2rem;
+  }
+  
+  .aboutTitle {
+    font-size: 2rem;
+  }
+  
+  .aboutDescription {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,173 @@
+.ourExperience {
+  padding: 60px 20px 120px 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.logo {
+  object-fit: contain;
+  width: 60px;
+  height: auto;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.description {
+  text-align: center;
+  max-width: 880px;
+  color: #333;
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.lineWrapper {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0.3em;
+}
+
+.line {
+  display: block;
+}
+
+.iconWrapper {
+  display: inline-block;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 40px 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.iconsContainer::before,
+.iconsContainer::after {
+  display: none;
+}
+
+.iconLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  filter: hue-rotate(50deg) saturate(1.5) brightness(1.2);
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+  .description {
+    font-size: 1.6rem;
+    max-width: 700px;
+  }
+
+  .icon {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ourExperience {
+    padding: 40px 20px 80px 20px;
+  }
+
+  .logoContainer {
+    padding-top: 20px;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .textContainer {
+    padding: 30px 15px;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .iconsContainer {
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .iconsContainer::before {
+    margin-right: 15px;
+  }
+
+  .iconsContainer::after {
+    margin-left: 15px;
+  }
+
+  .icon {
+    width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ourExperience {
+    padding: 30px 15px 60px 15px;
+  }
+
+  .logoContainer {
+    padding-top: 15px;
+  }
+
+  .logo {
+    width: 45px;
+  }
+
+  .textContainer {
+    padding: 25px 10px;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .iconsContainer {
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .iconsContainer::before,
+  .iconsContainer::after {
+    display: none;
+  }
+
+  .icon {
+    width: 55px;
+  }
+}

@@ -1,0 +1,288 @@
+.ourServices {
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #130604 85%, white 50%);
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.leftIcon,
+.rightIcon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.title {
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 3rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 16px;  
+}
+
+.subtitle {
+  font-family: GT Pressura, sans-serif;
+  font-size: 1rem;
+  color: white;
+  font-weight: 100;
+}
+
+.tabsNav {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tabsSwiper {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.683);
+}
+
+.tabsSwiper :global(.swiper-wrapper) {
+  justify-content: center;
+}
+
+.tabSlide {
+  width: auto !important;
+  min-width: 150px;
+
+}
+
+.tabButton {
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  font-family: GT Pressura, sans-serif;
+  font-size: .9rem;
+  color: white;
+  font-weight: 100;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+
+
+.tabButton.active {
+  color: var(--accent);
+  position: relative;
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  animation: expandBorder 0.5s ease forwards;
+}
+
+@keyframes expandBorder {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.tabContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  gap: 50px;
+  transition: all 0.4s ease;
+}
+
+.imageContainer {
+  flex: 0 0 600px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #130604;
+  transform: translateY(0);
+  z-index: 2;
+}
+
+.imageContainer.animating::before {
+  animation: revealImage .7s ease-in-out forwards;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.descriptionContainer {
+  flex: 1;
+  text-align: left;
+  margin-top: 40px;
+}
+
+.serviceImage {
+  transition: transform 0.3s ease;
+  transition: 1.7s;
+}
+
+.serviceImage:hover {
+  transform: scale(1.05);
+
+}
+
+.serviceTitle {
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.serviceTitle span {
+  display: block;
+  animation: slideUpText 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.serviceTitle span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.serviceTitle span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.serviceDescription {
+  font-family: GT Pressura, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: white;
+  max-width: 800px;
+  font-weight: 200;
+  margin: 0 auto;
+}
+
+.serviceDescription :global(.highlight) {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.lineWrapper {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0.2em;
+}
+
+.lineWrapper span {
+  display: inline-block;
+  animation: slideUpText 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.lineWrapper:nth-child(1) span {
+  animation-delay: 0s;
+}
+
+.lineWrapper:nth-child(2) span {
+  animation-delay: 0.1s;
+}
+
+.lineWrapper:nth-child(3) span {
+  animation-delay: 0.2s;
+}
+
+.lineWrapper:nth-child(4) span {
+  animation-delay: 0.3s;
+}
+
+@keyframes slideUpText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealImage {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .tabSlide {
+    min-width: 120px;
+  }
+
+  .tabButton {
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .imageContainer {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 300px;
+  }
+
+  .descriptionContainer {
+    text-align: center;
+  }
+
+  .serviceTitle {
+    font-size: 1.8rem;
+  }
+
+  .serviceDescription {
+    font-size: 1.1rem;
+  }
+}

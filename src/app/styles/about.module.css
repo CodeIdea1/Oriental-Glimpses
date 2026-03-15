@@ -1,0 +1,60 @@
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translate(-100%, -50%);
+  width: 50%;
+  height: 80%;
+  z-index: 10;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+.content {
+  text-align: left;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-changa);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  font-family: "GT Sectra Fine", Georgia, sans-serif;
+  max-width: 350px;
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}
