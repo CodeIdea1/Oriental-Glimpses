@@ -73,7 +73,7 @@ export default function TourPackages() {
         },
         '-=0.8'
       )
-      .fromTo(cardsRef.current?.children,
+      .fromTo(Array.from(cardsRef.current?.children || []),
         { 
           y: 60,
           opacity: 0
