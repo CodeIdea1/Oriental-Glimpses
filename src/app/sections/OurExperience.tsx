@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from '../styles/OurExperience.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,8 @@ const OurExperience = () => {
   const icon3Ref = useRef<HTMLDivElement>(null);
   const leftLineRef = useRef<HTMLDivElement>(null);
   const rightLineRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const t = translations[language].experience;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -139,13 +143,13 @@ const OurExperience = () => {
       <div className={styles.textContainer}>
         <p className={styles.description}>
           <span className={styles.lineWrapper}>
-            <span ref={line1Ref} className={styles.line}>Oriental Glimpses Travel & Tourism is an award-winning travel</span>
+            <span ref={line1Ref} className={styles.line}>{t.line1}</span>
           </span>
           <span className={styles.lineWrapper}>
-            <span ref={line2Ref} className={styles.line}>company specialising in luxury cultural tours, tailor-made</span>
+            <span ref={line2Ref} className={styles.line}>{t.line2}</span>
           </span>
           <span className={styles.lineWrapper}>
-            <span ref={line3Ref} className={styles.line}>journeys, honeymoons and big family adventures.</span>
+            <span ref={line3Ref} className={styles.line}>{t.line3}</span>
           </span>
         </p>
       </div>

@@ -1,25 +1,30 @@
 'use client';
 import { FaInstagram, FaPhone, FaEnvelope } from 'react-icons/fa';
 import styles from '../styles/Contact.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
   return (
     <section className={styles.contact}>
       <div className={styles.footerContent}>
         <div className={styles.footerGrid}>
           <div className={styles.footerColumn}>
-            <h3 className={styles.columnTitle}>Quick Links</h3>
+            <h3 className={styles.columnTitle}>{t.quickLinks}</h3>
             <ul className={styles.linkList}>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#packages">Packages</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home">{t.home}</a></li>
+              <li><a href="#experience">{t.experience}</a></li>
+              <li><a href="#services">{t.services}</a></li>
+              <li><a href="#packages">{t.packages}</a></li>
+              <li><a href="#contact">{t.contact}</a></li>
             </ul>
           </div>
 
           <div className={styles.footerColumn}>
-            <h3 className={styles.columnTitle}>Contact Us</h3>
+            <h3 className={styles.columnTitle}>{t.contactUs}</h3>
             <div className={styles.contactInfo}>
               <a href="tel:+962795356641" className={styles.contactLink}>
                 <FaPhone className={styles.icon} />
@@ -37,7 +42,7 @@ export default function Contact() {
           </div>
 
           <div className={styles.footerColumn}>
-            <h3 className={styles.columnTitle}>Follow Us</h3>
+            <h3 className={styles.columnTitle}>{t.followUs}</h3>
             <a href="https://instagram.com/Oriental_glimpses" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <FaInstagram className={styles.socialIcon} />
               <span>Oriental_glimpses</span>

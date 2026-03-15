@@ -6,25 +6,31 @@ import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import styles from '../styles/AdditionalServices.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
-const services = [
-  { title: 'Religious Tourism', image: 'Religious Tourism.jpg' },
-  { title: 'Group Tours', image: 'IMG_2948.PNG' },
-  { title: 'Conferences & Corporate Travel', image: 'IMG_2959.PNG' },
-  { title: 'Jordan Pass Assistance', image: 'Tour Guides.PNG' },
-  { title: 'Restaurant & Local Experience Reservations', image: 'PrivateVIP Tours.PNG' },
-  { title: '24/7 Travel Support', image: 't.jpeg' },
-];
+
 
 export default function AdditionalServices() {
   const swiperRef = useRef<any>(null);
+  const { language } = useLanguage();
+  const t = translations[language].additionalServices;
+
+  const services = [
+    { title: t.religious, image: 'Religious Tourism.jpg' },
+    { title: t.group, image: 'IMG_2948.PNG' },
+    { title: t.conferences, image: 'IMG_2959.PNG' },
+    { title: t.jordanPass, image: 'Tour Guides.PNG' },
+    { title: t.restaurants, image: 'PrivateVIP Tours.PNG' },
+    { title: t.support, image: 't.jpeg' },
+  ];
 
   return (
     <section className={styles.additionalServices}>
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <div>
-            <h2 className={styles.title}>Additional Services</h2>
+            <h2 className={styles.title}>{t.title}</h2>
           </div>
           <img src="/right.svg" alt="" className={styles.headerIcon} />
         </div>

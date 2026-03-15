@@ -2,14 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowDown } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import styles from '../styles/Navbar.module.css';
 import { blinkTransition } from '../utils/blinkTransition';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language].navbar;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +69,7 @@ export default function Navbar() {
           Oriental Glimpses Travel & Tourism
         </span>
         <Image 
-          src="/logo6.png" 
+          src="/logo3.png" 
           alt="Oriental Glimpses" 
           width={60} 
           height={60}
@@ -79,21 +84,31 @@ export default function Navbar() {
         />
       </div>
 
-      <button className={styles.enquireButton}>
-        Enquire
-        <span className={styles.arrowIcon}>
-          <ArrowDown size={16} strokeWidth={2} />
-        </span>
+      <button 
+        className={styles.languageButton}
+        onClick={() => setIsLangOpen(!isLangOpen)}
+      >
+        <Globe size={20} />
+        <span>{language === 'en' ? 'EN' : language === 'ar' ? 'AR' : language === 'it' ? 'IT' : language === 'he' ? 'HE' : 'ES'}</span>
+        {isLangOpen && (
+          <div className={styles.languageDropdown}>
+            <button onClick={() => { setLanguage('en'); setIsLangOpen(false); }}>English</button>
+            <button onClick={() => { setLanguage('ar'); setIsLangOpen(false); }}>العربية</button>
+            <button onClick={() => { setLanguage('it'); setIsLangOpen(false); }}>Italiano</button>
+            <button onClick={() => { setLanguage('he'); setIsLangOpen(false); }}>עברית</button>
+            <button onClick={() => { setLanguage('es'); setIsLangOpen(false); }}>Español</button>
+          </div>
+        )}
       </button>
 
       {isMenuOpen && (
         <div className={`${styles.mobileMenu} ${isClosing ? styles.closing : ''}`}>
           <ul className={styles.menuList}>
-            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('home'); }}>Home</a></li>
-            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('experience'); }}>Experience</a></li>
-            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('services'); }}>Services</a></li>
-            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('packages'); }}>Packages</a></li>
-            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('contact'); }}>Contact</a></li>
+            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('home'); }}>{t.home}</a></li>
+            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('experience'); }}>{t.experience}</a></li>
+            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('services'); }}>{t.services}</a></li>
+            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('packages'); }}>{t.packages}</a></li>
+            <li><a onClick={(e) => { e.preventDefault(); handleMenuClick('contact'); }}>{t.contact}</a></li>
           </ul>
         </div>
       )}

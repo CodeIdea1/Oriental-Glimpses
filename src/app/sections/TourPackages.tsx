@@ -3,15 +3,12 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from '../styles/TourPackages.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const packages = [
-  { tour: '3 Day Tour', price: '$570', destinations: ['Amman', 'Petra', 'Dead Sea'], image: ' Petra2.png' },
-  { tour: '5 Day Tour', price: '$900', destinations: ['Amman', 'Madaba', 'Mount Nebo', 'Petra', 'Wadi Rum', 'Dead Sea'], image: 'Wadi Rum.png' },
-  { tour: '7 Day Tour', price: '$1225', destinations: ['Amman', 'Jerash', 'Ajloun', 'Madaba', 'Mount Nebo', 'Petra', 'Wadi Rum', 'Dead Sea'], image: 'Dead Sea.jpg' },
-  { tour: '10 Day Tour', price: '$1695', destinations: ['Amman', 'Jerash', 'Ajloun', 'Umm Qais', 'Pella', 'Al Salt', 'Madaba', 'Mount Nebo', 'Karak', 'Petra', 'Wadi Rum', 'Aqaba', 'Dead Sea', 'Desert Castles'], image: 'aqaba.png' }
-];
+
 
 export default function TourPackages() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -20,6 +17,15 @@ export default function TourPackages() {
   const cardsRef = useRef<HTMLDivElement>(null);
   const leftIconRef = useRef<HTMLImageElement>(null);
   const rightIconRef = useRef<HTMLImageElement>(null);
+  const { language } = useLanguage();
+  const t = translations[language].packages;
+
+  const packages = [
+    { tour: t.day3, price: '$570', destinations: [t.destinations.amman, t.destinations.petra, t.destinations.deadSea], image: ' Petra2.png' },
+    { tour: t.day5, price: '$900', destinations: [t.destinations.amman, t.destinations.madaba, t.destinations.mountNebo, t.destinations.petra, t.destinations.wadiRum, t.destinations.deadSea], image: 'Wadi Rum.png' },
+    { tour: t.day7, price: '$1225', destinations: [t.destinations.amman, t.destinations.jerash, t.destinations.ajloun, t.destinations.madaba, t.destinations.mountNebo, t.destinations.petra, t.destinations.wadiRum, t.destinations.deadSea], image: 'Dead Sea.jpg' },
+    { tour: t.day10, price: '$1695', destinations: [t.destinations.amman, t.destinations.jerash, t.destinations.ajloun, t.destinations.ummQais, t.destinations.pella, t.destinations.alSalt, t.destinations.madaba, t.destinations.mountNebo, t.destinations.karak, t.destinations.petra, t.destinations.wadiRum, t.destinations.aqaba, t.destinations.deadSea, t.destinations.desertCastles], image: 'aqaba.png' }
+  ];
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -117,10 +123,10 @@ export default function TourPackages() {
       <div ref={headerRef} className={styles.header}>
         <div className={styles.titleWrapper}>
           <img ref={leftIconRef} src="/left.svg" alt="" className={styles.leftIcon} />
-          <h2 className={styles.title}>Tour Packages</h2>
+          <h2 className={styles.title}>{t.title}</h2>
           <img ref={rightIconRef} src="/right.svg" alt="" className={styles.rightIcon} />
         </div>
-        <p className={styles.subtitle}>Discover Jordan with our exclusive packages</p>
+        <p className={styles.subtitle}>{t.subtitle}</p>
       </div>
 
       <div ref={cardsRef} className={styles.packagesGrid}>

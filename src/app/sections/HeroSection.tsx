@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from '../styles/herSection.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +14,8 @@ export default function HeroSection() {
   const layerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const t = translations[language].hero;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,7 +57,9 @@ export default function HeroSection() {
         <div ref={layerRef} className={styles.layer} style={{ backgroundImage: 'url(/layer6.png)' }} />
         <div ref={overlayRef} className={styles.overlay}>
           <h1>
-            Oriental<br />Glimpses
+            {t.title.split(' ').map((word, i) => (
+              <span key={i}>{word}<br /></span>
+            ))}
           </h1>
         </div>
       </div>
@@ -61,13 +67,11 @@ export default function HeroSection() {
       <div ref={aboutRef} className={styles.aboutSection}>
         <div className={styles.aboutContainer}>
           <div className={styles.aboutContent}>
-            <h2 className={styles.aboutTitle}>Oriental Glimpses</h2>
+            <h2 className={styles.aboutTitle}>{t.aboutTitle}</h2>
             <p className={styles.aboutDescription}>
-              Welcome to Oriental Glimpses, where we celebrate the <span className={styles.highlight}>rich tapestry</span> of Eastern culture, art, and heritage. 
-              Our journey began with a passion for showcasing the <span className={styles.highlight}>timeless beauty</span> and profound wisdom of the Orient.
+              {t.aboutDescription}
               <br /><br />
-              We believe in preserving cultural authenticity while embracing modern storytelling. Each piece we present 
-              is carefully selected to reflect the depth, <span className={styles.highlight}>elegance</span>, and diversity of Eastern civilizations.
+              {t.aboutDescription2}
             </p>
           </div>
         </div>

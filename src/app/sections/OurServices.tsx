@@ -9,53 +9,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import styles from '../styles/OurServices.module.css';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const servicesData = [
-  {
-    id: 1,
-    title: 'Transportation',
-    fullTitle: 'Transportation Services',
-    image: 'Transportation Services.png',
-    description: ['Experience <span class="highlight">seamless travel</span> with our <span class="highlight">premium</span>', 'transportation services.', 'From <span class="highlight">luxury vehicles</span> to comfortable coaches, we ensure', 'your journey is as <span class="highlight">memorable</span> as your destination.']
-  },
-  {
-    id: 2,
-    title: 'Hotels & Resorts',
-    fullTitle: 'Hotels & Resorts.png',
-    image: '/Hotels & Resorts.png',
-    description: ['Stay in the <span class="highlight">finest hotels</span> and resorts across Jordan.', 'We handpick accommodations that blend <span class="highlight">comfort, luxury,</span>', 'and <span class="highlight">authentic local experiences.</span>']
-  },
-  {
-    id: 3,
-    title: 'Tour Guides',
-    fullTitle: 'Licensed Tour Guides',
-    image: '/Tour Guides2.PNG',
-    description: ['Our <span class="highlight">expert guides</span> bring history to life with their <span class="highlight">deep', 'knowledge</span> and passion for Jordan\'s <span class="highlight">rich cultural heritage</span>', 'and <span class="highlight">archaeological wonders.</span>']
-  },
-  {
-    id: 4,
-    title: 'Cultural Tours',
-    fullTitle: 'Cultural & Historical Tours',
-    image: 'CulturalHistorical Tours.jpg',
-    description: ['Explore <span class="highlight">ancient civilizations</span> and <span class="highlight">UNESCO World Heritage</span>', 'sites with our <span class="highlight">immersive</span> cultural and historical tours.']
-  },
-  {
-    id: 5,
-    title: 'Desert Adventures',
-    fullTitle: 'Adventure & Desert Experiences',
-    image: 'Adventure Desert Experiences.JPEG',
-    description: ['Discover the <span class="highlight">magic of Wadi Rum</span> and Jordan\'s stunning', 'deserts through <span class="highlight">thrilling adventures</span> and <span class="highlight">authentic Bedouin</span>', 'experiences.']
-  },
-  {
-    id: 6,
-    title: 'VIP Tours',
-    fullTitle: 'Private & VIP Tours',
-    image: 'PrivateVIP Tours.PNG',
-    description: ['Enjoy <span class="highlight">exclusive access</span> and <span class="highlight">personalized attention</span> with our', '<span class="highlight">luxury private</span> and VIP tour experiences.']
-  }
-];
+
 
 const OurServices = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -66,6 +25,53 @@ const OurServices = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const leftIconRef = useRef<HTMLImageElement>(null);
   const rightIconRef = useRef<HTMLImageElement>(null);
+  const { language } = useLanguage();
+  const t = translations[language].services;
+
+  const servicesData = [
+    {
+      id: 1,
+      title: t.transportation,
+      fullTitle: t.transportationFull,
+      image: 'Transportation Services.png',
+      description: t.transportationDesc
+    },
+    {
+      id: 2,
+      title: t.hotels,
+      fullTitle: t.hotelsFull,
+      image: '/Hotels & Resorts.png',
+      description: t.hotelsDesc
+    },
+    {
+      id: 3,
+      title: t.guides,
+      fullTitle: t.guidesFull,
+      image: '/Tour Guides2.PNG',
+      description: t.guidesDesc
+    },
+    {
+      id: 4,
+      title: t.cultural,
+      fullTitle: t.culturalFull,
+      image: 'CulturalHistorical Tours.jpg',
+      description: t.culturalDesc
+    },
+    {
+      id: 5,
+      title: t.desert,
+      fullTitle: t.desertFull,
+      image: 'Adventure Desert Experiences.JPEG',
+      description: t.desertDesc
+    },
+    {
+      id: 6,
+      title: t.vip,
+      fullTitle: t.vipFull,
+      image: 'PrivateVIP Tours.PNG',
+      description: t.vipDesc
+    }
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -166,10 +172,10 @@ const OurServices = () => {
       <div ref={headerRef} className={styles.header}>
         <div className={styles.titleWrapper}>
           <Image ref={leftIconRef} src="/left.svg" alt="Decoration" width={50} height={50} className={styles.leftIcon} />
-          <h2 className={styles.title}>Our Services</h2>
+          <h2 className={styles.title}>{t.title}</h2>
           <Image ref={rightIconRef} src="/right.svg" alt="Decoration" width={50} height={50} className={styles.rightIcon} />
         </div>
-        <p className={styles.subtitle}>Tailor-made itineraries, crafted by our experts</p>
+        <p className={styles.subtitle}>{t.subtitle}</p>
       </div>
 
       <nav ref={tabsRef} className={styles.tabsNav}>
@@ -214,7 +220,7 @@ const OurServices = () => {
             <p className={styles.serviceDescription} key={`desc-${activeTab}`}>
               {splitTextToLines(servicesData[activeTab].description).map((line, index) => (
                 <span key={index} className={styles.lineWrapper}>
-                  <span dangerouslySetInnerHTML={{ __html: line }} />
+                  <span>{line}</span>
                 </span>
               ))}
             </p>
