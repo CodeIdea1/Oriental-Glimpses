@@ -19,8 +19,9 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      // يبدأ التغيير عند 1500px من الأعلى
-      setIsScrolled(scrollPosition > 3200);
+      const isMobile = window.innerWidth <= 768;
+      const threshold = isMobile ? 800 : 3200;
+      setIsScrolled(scrollPosition > threshold);
     };
 
     handleScroll(); // تشغيل مرة عند التحميل

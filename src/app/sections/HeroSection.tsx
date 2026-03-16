@@ -26,7 +26,7 @@ export default function HeroSection() {
     const overlayEndX = isMobile ? '-90%' : '-140%';
     const aboutStartX = isMobile ? '-20%' : '-170%';
     const aboutEndX = isMobile ? '0%' : '-20%';
-    const bgScale = isMobile ? 0.90 : 0.85;
+    const bgScale = isMobile ? 0.90 : 0.90;
     const aboutDelay = isMobile ? 0.2 : 0.05;
 
     const ctx = gsap.context(() => {

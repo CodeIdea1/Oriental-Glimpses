@@ -147,7 +147,7 @@
 
 .aboutSection {
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 4%;
   transform: translateX(-100%);
   width: 50%;
@@ -189,7 +189,7 @@
     width: 90%;
     left: 5%;
     height: 100%;
-    padding-top: 7rem;
+    padding-top: 2rem;
   }
 }
 
