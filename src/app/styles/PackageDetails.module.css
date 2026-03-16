@@ -44,9 +44,16 @@
 
 @media (max-width: 768px) {
   .packageDetails {
+    padding: 30px 5%;
+  }
+
+  .container {
     flex-direction: column;
     gap: 40px;
-    padding: 60px 5%;
+  }
+
+  .column {
+    width: 100%;
   }
 
   .columnTitle {

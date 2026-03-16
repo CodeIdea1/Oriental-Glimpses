@@ -16,10 +16,18 @@
   width: 120%;
   height: 120%;
   position: absolute;
-  top: -10%;
-  left: -10%;
+  top: 2%;
+  left: 15%;
   will-change: transform;
   transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+  }
 }
 
 .swiper {
@@ -31,9 +39,18 @@
   width: 100%;
   height: 100%;
   background-size: contain;
-  background-position:-200%  100% ;
+  background-position: center bottom;
+  background-repeat: no-repeat;
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .slide {
+    background-size: cover;
+    background-position: 22% 100%;
+  }
+}
+
 
 .layer {
   position: absolute;
@@ -46,7 +63,30 @@
   background-repeat: no-repeat;
   z-index: 5;
   pointer-events: none;
-  transform: translateX(-18%);
+}
+
+@media (max-width: 1024px) {
+  .layer {
+    height: 120%;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  .layer {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center  right;
+  }
+}
+
+@media (max-width: 480px) {
+  .layer {
+    background-size: cover;
+    background-position: center right;
+  }
 }
 
 .overlay {
@@ -61,6 +101,15 @@
   width: max-content;
 }
 
+@media (max-width: 768px) {
+  .overlay {
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .overlay h1 {
   font-size: 9rem;
   margin-bottom: 1rem;
@@ -72,6 +121,24 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+  .overlay h1 {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 5.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay h1 {
+    font-size: 4.5rem;
+  }
+}
+
 .overlay p {
   font-size: 1.5rem;
   color: var(--bg-light);
@@ -80,24 +147,71 @@
 
 .aboutSection {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 4%;
-  transform: translate(-100%, -50%);
+  transform: translateX(-100%);
   width: 50%;
-  height: 80%;
+  height: 100%;
   z-index: 10;
   opacity: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+.shadowOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .shadowOverlay {
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .aboutSection {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutSection {
+    width: 90%;
+    left: 5%;
+    height: 100%;
+    padding-top: 7rem;
+  }
 }
 
 .aboutContainer {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: start;
+  justify-content: center;
   color: white;
   border-radius: 20px;
   padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+  height: auto;
+  }
+
+  .aboutContainer {
+    padding: 1.5rem 0;
+  }
 }
 
 .aboutContent {
@@ -113,6 +227,25 @@
   line-height: 1.2;
 }
 
+@media (max-width: 1024px) {
+  .aboutTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutTitle {
+    font-size: 1.5rem;
+  }
+}
+
 .aboutDescription {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -120,6 +253,21 @@
   font-family: "GT Sectra Fine", Georgia, sans-serif;
   max-width: 350px;
 }
+
+@media (max-width: 1024px) {
+  .aboutDescription {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
 
 .highlight {
   color: var(--accent);
@@ -156,24 +304,4 @@
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .overlay h1 {
-    font-size: 2.5rem;
-  }
-  
-  .overlay p {
-    font-size: 1.2rem;
-  }
 
-  .aboutContainer {
-    padding: 2rem;
-  }
-  
-  .aboutTitle {
-    font-size: 2rem;
-  }
-  
-  .aboutDescription {
-    font-size: 1rem;
-  }
-}

@@ -218,30 +218,78 @@
 }
 
 @media (max-width: 768px) {
+  .tourPackages {
+    padding: 50px 3.7%;
+  }
+
   .title {
     font-size: 2rem;
   }
 
   .packagesGrid {
     flex-direction: column;
+    gap: 20px;
   }
 
   .packageCard {
     width: 100%;
     height: 400px;
-    flex: none;
+    flex: none !important;
+  }
+
+  .packageCard:hover {
+    flex: none !important;
+  }
+
+  .packageCard:hover ~ .packageCard,
+  .packagesGrid:has(.packageCard:hover) .packageCard:not(:hover) {
+    flex: none !important;
+  }
+
+  .packageCard img {
+    width: 150%;
+    left: auto;
+    right: -50%;
+    object-position: right center;
+  }
+
+  .cardContent {
+    padding: 25px;
+  }
+
+  .packageCard:hover .cardContent {
+    padding: 25px;
   }
 
   .tourName {
     font-size: 1.5rem;
   }
 
+  .packageCard:hover .tourName {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+
   .price {
     font-size: 1.8rem;
   }
 
+  .packageCard:hover .price {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .destinations {
+    width: 100%;
+  }
+
   .packageCard:hover .destinations {
-    font-size: 0.95rem;
+    max-height: 300px;
+  }
+
+  .destination {
+    font-size: 0.85rem;
+    padding: 6px 12px;
   }
 
   .bookButton {

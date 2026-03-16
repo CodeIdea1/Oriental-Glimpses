@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,8 +23,70 @@ const OurExperience = () => {
   const rightLineRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const t = translations[language].experience;
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      // في الموبايل لا نحتاج أنيميشن معقد
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 70%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        tl.fromTo(logoRef.current,
+          { 
+            scale: 0.8,
+            opacity: 0
+          },
+          { 
+            scale: 1,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out'
+          }
+        )
+        .fromTo(sectionRef.current?.querySelector(`.${styles.description}`),
+          { 
+            y: 50,
+            opacity: 0
+          },
+          { 
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out'
+          },
+          '-=0.4'
+        )
+        .fromTo([icon1Ref.current, icon2Ref.current, icon3Ref.current],
+          { 
+            opacity: 0,
+            scale: 0.3
+          },
+          { 
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power2.out'
+          },
+          '-=0.3'
+        );
+      }, sectionRef);
+
+      return () => ctx.revert();
+    }
+
+    // أنيميشن الشاشات الكبيرة
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -142,15 +204,21 @@ const OurExperience = () => {
       </div>
       <div className={styles.textContainer}>
         <p className={styles.description}>
-          <span className={styles.lineWrapper}>
-            <span ref={line1Ref} className={styles.line}>{t.line1}</span>
-          </span>
-          <span className={styles.lineWrapper}>
-            <span ref={line2Ref} className={styles.line}>{t.line2}</span>
-          </span>
-          <span className={styles.lineWrapper}>
-            <span ref={line3Ref} className={styles.line}>{t.line3}</span>
-          </span>
+          {isMobile ? (
+            `${t.line1} ${t.line2} ${t.line3}`
+          ) : (
+            <>
+              <span className={styles.lineWrapper}>
+                <span ref={line1Ref} className={styles.line}>{t.line1}</span>
+              </span>
+              <span className={styles.lineWrapper}>
+                <span ref={line2Ref} className={styles.line}>{t.line2}</span>
+              </span>
+              <span className={styles.lineWrapper}>
+                <span ref={line3Ref} className={styles.line}>{t.line3}</span>
+              </span>
+            </>
+          )}
         </p>
       </div>
       

@@ -14,35 +14,61 @@ export default function HeroSection() {
   const layerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
+  const shadowOverlayRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const t = translations[language].hero;
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    const startX = isMobile ? '-100%' : '-15%';
+    const endX = isMobile ? '-20%' : '0%';
+    const overlayEndX = isMobile ? '-90%' : '-140%';
+    const aboutStartX = isMobile ? '-20%' : '-170%';
+    const aboutEndX = isMobile ? '0%' : '-20%';
+    const bgScale = isMobile ? 0.90 : 0.85;
+    const aboutDelay = isMobile ? 0.2 : 0.05;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=300%',
+          end: '+=200%',
           scrub: 1,
           pin: true,
+          pinSpacing: true,
         }
       });
 
       tl.fromTo(layerRef.current,
-        { x: '-18%' },
-        { x: '0%', ease: 'none', duration: 1 }
+        { x: startX },
+        { x: endX, ease: 'power2.inOut' },
+        0
+      )
+      .fromTo(backgroundRef.current,
+        { scale: 1 },
+        { scale: bgScale, ease: 'power2.inOut' },
+        0
       )
       .fromTo(overlayRef.current,
         { x: '0%' },
-        { x: '-90%', ease: 'none', duration: 1 },
+        { x: overlayEndX, ease: 'power2.inOut' },
         0
       )
       .fromTo(aboutRef.current,
-        { x: '-100%', opacity: 0 },
-        { x: '0%', opacity: 1, ease: 'none', duration: 1 }
-      )
-      .to({}, { duration: 1 });
+        { x: aboutStartX, opacity: 0 },
+        { x: aboutEndX, opacity: 1, ease: 'power2.inOut' },
+        aboutDelay
+      );
+
+      if (isMobile && shadowOverlayRef.current) {
+        tl.fromTo(shadowOverlayRef.current,
+          { opacity: 0 },
+          { opacity: 1, ease: 'power2.inOut' },
+          0.2
+        );
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -52,7 +78,7 @@ export default function HeroSection() {
     <div ref={containerRef} className={styles.heroContainer}>
       <div className={styles.hero}>
         <div className={styles.imageContainer}>
-          <div className={styles.slide} style={{ backgroundImage: 'url(/bb.png)' }} />
+          <div ref={backgroundRef} className={styles.slide} style={{ backgroundImage: 'url(/12345.png)' }} />
         </div>
         <div ref={layerRef} className={styles.layer} style={{ backgroundImage: 'url(/layer6.png)' }} />
         <div ref={overlayRef} className={styles.overlay}>
@@ -63,6 +89,8 @@ export default function HeroSection() {
           </h1>
         </div>
       </div>
+      
+      <div ref={shadowOverlayRef} className={styles.shadowOverlay} />
       
       <div ref={aboutRef} className={styles.aboutSection}>
         <div className={styles.aboutContainer}>
