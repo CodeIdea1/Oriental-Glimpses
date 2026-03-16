@@ -54,20 +54,24 @@ const OurExperience = () => {
             ease: 'power2.out'
           }
         )
-        .fromTo(sectionRef.current?.querySelector(`.${styles.description}`),
-          { 
-            y: 50,
-            opacity: 0
-          },
-          { 
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out'
-          },
-          '-=0.4'
-        )
-        .fromTo([icon1Ref.current, icon2Ref.current, icon3Ref.current],
+        const descElement = sectionRef.current?.querySelector(`.${styles.description}`);
+        if (descElement) {
+          tl.fromTo(descElement,
+            { 
+              y: 50,
+              opacity: 0
+            },
+            { 
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power3.out'
+            },
+            '-=0.4'
+          );
+        }
+        
+        tl.fromTo([icon1Ref.current, icon2Ref.current, icon3Ref.current],
           { 
             opacity: 0,
             scale: 0.3
