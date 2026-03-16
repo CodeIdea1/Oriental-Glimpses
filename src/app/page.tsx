@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroSection from "./sections/HeroSection";
 import OurExperience from './sections/OurExperience';
 import OurServices from './sections/OurServices';
+import AdditionalServices from './sections/AdditionalServices';
 import ContactBar from './components/ContactBar';
 import TourPackages from './sections/TourPackages';
 import PackageDetails from './sections/PackageDetails';
@@ -34,6 +35,7 @@ export default function Home() {
       <div id="services">
         <OurServices />
       </div>
+      <AdditionalServices />
       <div id="packages">
         <TourPackages />
         <PackageDetails />
