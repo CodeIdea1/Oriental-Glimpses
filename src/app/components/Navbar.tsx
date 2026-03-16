@@ -20,7 +20,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const isMobile = window.innerWidth <= 768;
-      const threshold = isMobile ? 800 : 3200;
+      const threshold = isMobile ? 800 : 2400;
       setIsScrolled(scrollPosition > threshold);
     };
 
